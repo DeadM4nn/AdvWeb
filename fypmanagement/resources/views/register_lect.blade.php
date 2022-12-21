@@ -18,17 +18,17 @@
             <input type="text" class="w3-input w3-border" name="lect_name" id="lect_name" placeholder="Enter lect name" required><br>
         </div>
 
+        <!-- Lect contact -->
+        <div class="form-group">
+            <label for="lect_contact">Phone No.</label>
+            <input type="text" class="w3-input w3-border" name="lect_contact" id="lect_contact" placeholder="03-89212020 Ext: 2329 / 7307" required><br>
+        </div>
+
         <!--Lect Password-->
         <div class="form-group">
             <label for="lect_name">Password</label>
-            <input type="password" class="w3-input w3-border" name="lect_name" id="lect_name" placeholder="Enter lect name" required><br>
+            <input type="password" class="w3-input w3-border" name="lect_password" id="lect_password" placeholder="Password" required><br>
         </div>
-
-        <div class="form-group">
-            <label for="lect_name">Confirm Password</label>
-            <input type="password" class="w3-input w3-border" name="lect_name" id="lect_name" placeholder="Enter lect name" required><br>
-        </div>
-
 
         <div class="w3-right-align">
             <input class="w3-red w3-button w3-hover-black" type="submit" value="Submit">

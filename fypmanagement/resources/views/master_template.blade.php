@@ -25,8 +25,8 @@ body {font-size:16px;}
   <div class="w3-bar-block">
     <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
     <a href="/student" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Student</a> 
-    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Project</a> 
-    <a href="#designers" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Supervisor</a> 
+    <a href="/project" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Project</a> 
+    <a href="/lect" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Supervisor</a> 
     <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Examiner</a> 
   </div>
 </nav>

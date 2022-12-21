@@ -24,3 +24,10 @@ Route::post('/student/update/{id}/process', [studentControl::class, "updateProce
 
 //Lecturers
 Route::get('/lect/register', [lectControl::class, "registerForm"]);
+Route::get('/lect', [lectControl::class, "showList"]);
+Route::post('/lect/register/process', [lectControl::class, "registerProcess"]);
+Route::get('/lect/update/{id}', [lectControl::class, "updateForm"]);
+Route::post('/lect/update/process', [lectControl::class, "updateProcess"]);
+Route::get('/lect/delete/{id}', [lectControl::class, "deleteLect"]);
+Route::get('/lect/reset/{id}', [lectControl::class, "resetForm"]);
+Route::post('/lect/reset/process', [lectControl::class, "updateProcess"]);
