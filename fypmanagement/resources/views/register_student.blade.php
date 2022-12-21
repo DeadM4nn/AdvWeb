@@ -1,7 +1,9 @@
 @extends('master_template')
 @section('title', 'Register Student')
 @section('content')
-    <form>
+    <form action="/student/register/process" method="post">
+
+        @csrf
 
         <!-- Student ID -->
         <div class="form-group">
@@ -23,11 +25,16 @@
             <label for="student_gender">Female</label><br>
         </div>
 
-        <!-- Student gender -->
+        <!-- Student Phone No. -->
         <div class="form-group">
-            <label for="student_address">Adress</label>
-            <textarea rows="4" cols="50 type="text" class="form-control" id="student_address" required>
-            </textarea><br>
+            <label for="student_contact">Phone No.</label>
+            <input class="student_contact" id="student_contact"  type="text" class="form-control" placeholder="011-500-9000" required><br>
+        </div>
+
+        <!-- Student Address -->
+        <div class="form-group">
+            <label for="student_address">Address</label>
+            <textarea rows="4" cols="50 type="text" class="form-control" id="student_address" required></textarea><br>
         </div>        
 
         <input type="submit" value="Submit">

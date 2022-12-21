@@ -13,4 +13,5 @@ use App\Http\Controllers\studentControl;
 |
 */
 
-Route::get('/', [studentControl::class, "registerStudentpage"]);
+Route::get('/student/register', [studentControl::class, "registerForm"]);
+Route::post('/student/register/process', [studentControl::class, "registerProcess"]);

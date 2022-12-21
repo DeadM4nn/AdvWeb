@@ -9,4 +9,5 @@ class student extends Model
 {
     use HasFactory;
     protected $keyType = 'string';
+    public $timestamps=false; 
 }
