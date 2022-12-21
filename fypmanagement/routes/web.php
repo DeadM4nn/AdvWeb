@@ -36,3 +36,4 @@ Route::post('/lect/reset/process', [lectControl::class, "updateProcess"]);
 
 //Project
 Route::get('/project/register', [projectControl::class, "registerForm"]);
+Route::post('/project/register/process', [projectControl::class, "registerProcess"]);

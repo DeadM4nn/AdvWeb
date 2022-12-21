@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Route;
 use Illuminate\Http\Request;
 use App\Models\student;
+use App\Models\project;
 
 class studentControl extends Controller
 {
@@ -25,7 +26,11 @@ class studentControl extends Controller
 
     function showList(){
         $data = student::paginate(5);
-        return view('view_student_list', ['data'=>$data]);
+        $project = student::pluck("id");
+        //$project = $project->collapse();
+        
+
+        return view('view_student_list', ['data'=>$data, 'student_proj' => $project]);
     }
 
     function deleteStudent($id){

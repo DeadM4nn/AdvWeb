@@ -1,11 +1,12 @@
 @extends('master_template')
-@section('title', 'Register Project')
+@section('title', 'Assign Project')
 @section('content')
     <a href="/project" class="w3-button w3-black w3-hover-red" style="margin-bottom:32px">Back</a>
     <form class="w3-container" action="/project/register/process" method="post">
 
         @csrf
-
+        <input type="hidden" name="project_student_id" value="SW0107287">
+        
         <!-- project Title -->
         <div class="form-group">
             <label for="project_title">Title</label>
@@ -58,7 +59,7 @@
         </div>
 
         <!-- project Status -->
-        <div class="form-group">
+        <div class="form-group" style="margin-bottom:32px">
             <label for="project_status">Status</label>
             <br>
             <select name="project_status" id="project_status" required>
@@ -69,11 +70,38 @@
             </select>
         </div>
 
-        <input type="hidden" name="project_student_id" value="SW0107287">
+        <!-- project Supervisor -->
+        <div class="form-group"  style="margin-bottom:32px">
+            <label for="project_supervisor_id">Supervisor</label>
+            <br>
+            <table class="w3-table w3-striped w3-bordered ">
+        <tr class="w3-red">
+            <th>Lecture ID</th>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Choose</th>
+        </tr>
+
+        @foreach($super as $sup)
+            @if($sup['is_coord'] == 0)
+                <tr>
+                    <td>{{$sup['id']}}</td>
+                    <td>{{$sup['name']}}</td>
+                    <td>{{$sup['contact']}}</td>
+                    <td>
+                        <input type="radio" id="project_supervisor_id" name="project_supervisor_id" value="{{$sup['id']}}" required>
+                    </td>
+                </tr>
+            @endif
+        @endforeach
+    </table>
+        </div>
+
+
 
 
         <div class="w3-right-align">
-            <input class="w3-red w3-button w3-hover-black" type="submit" value="Submit">
+            <input class="w3-red w3-button w3-hover-black" type="submit" value="Assign">
             <input class="w3-black w3-button w3-hover-red" type="reset" value="Reset">
         </div>
     </form>

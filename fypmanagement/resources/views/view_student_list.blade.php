@@ -5,7 +5,7 @@
     <div class="w3-right-align">
     <a href="/student/register" class="w3-button w3-red w3-hover-black" style="margin-bottom:32px">Add+</a>
     </div>
-
+    {{$student_proj}}
     <table class="w3-table w3-striped w3-bordered">
         <tr>
             <th>Student ID</th>
