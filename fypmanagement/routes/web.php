@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\studentControl;
 use App\Http\Controllers\lectControl;
+use App\Http\Controllers\projectControl;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +32,7 @@ Route::post('/lect/update/process', [lectControl::class, "updateProcess"]);
 Route::get('/lect/delete/{id}', [lectControl::class, "deleteLect"]);
 Route::get('/lect/reset/{id}', [lectControl::class, "resetForm"]);
 Route::post('/lect/reset/process', [lectControl::class, "updateProcess"]);
+
+
+//Project
+Route::get('/project/register', [projectControl::class, "registerForm"]);

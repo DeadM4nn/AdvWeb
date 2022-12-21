@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class project extends Model
 {
     use HasFactory;
+    protected $keyType = 'string';
+    public $timestamps=false; 
 }
