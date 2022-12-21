@@ -22,4 +22,9 @@ class studentControl extends Controller
         $new_student->save();
         return view("register_student");
     }
+
+    function showList(){
+        $data = student::all();
+        return view('view_student_list', ['data'=>$data]);
+    }
 }

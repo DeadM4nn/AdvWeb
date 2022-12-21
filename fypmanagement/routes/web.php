@@ -15,3 +15,4 @@ use App\Http\Controllers\studentControl;
 
 Route::get('/student/register', [studentControl::class, "registerForm"]);
 Route::post('/student/register/process', [studentControl::class, "registerProcess"]);
+Route::get('/student', [studentControl::class, "showList"]);
