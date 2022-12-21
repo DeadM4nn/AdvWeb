@@ -13,6 +13,8 @@
             <th>Gender</th>
             <th>Contact</th>
             <th>Address</th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
 
         @foreach($data as $x)
@@ -22,7 +24,18 @@
                 <td>{{$x['gender']}}</td>
                 <td>{{$x['contact']}}</td>
                 <td>{{$x['address']}}</td>
+                <td><a href="/student/update/{{$x['id']}}"><img width=25px height=auto src="{{asset('img\edit.png')}}"></a></td>
+                <td><a href="/student/delete/{{$x['id']}}"><img width=25px height=auto src="{{asset('img\delete.png')}}"></a></td>
             </tr>
         @endforeach
     </table>
+    <div class="w3-right-align">
+        {{$data->links();}}
+    </div>
+
+    <style>
+        .w-5{
+            display:none
+        }
+    </style>
 @endsection

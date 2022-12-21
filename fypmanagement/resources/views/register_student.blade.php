@@ -37,7 +37,7 @@
         <!-- Student Phone No. -->
         <div class="form-group">
             <label for="student_contact">Phone No.</label>
-            <input class="student_contact w3-input w3-border" name="student_contact" id="student_contact"  type="text" class="w3-input w3-border" placeholder="011-500-9000" required><br>
+            <input class="student_contact w3-input w3-border" name="student_contact" id="student_contact"  type="number" class="w3-input w3-border" placeholder="0115009000" required><br>
         </div>
 
         <!-- Student Address -->
