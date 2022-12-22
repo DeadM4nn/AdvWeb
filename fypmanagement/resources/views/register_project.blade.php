@@ -76,11 +76,11 @@
 
         <!-- project Supervisor -->
         <div class="form-group"  style="margin-bottom:32px">
-            <label for="project_supervisor_id">Supervisor</label>
+            <label for="project_supervisor_email">Supervisor</label>
             <br>
             <table class="w3-table w3-striped w3-bordered ">
         <tr class="w3-red">
-            <th>Lecture ID</th>
+            <th>Email</th>
             <th>Name</th>
             <th>Contact</th>
             <th>Choose</th>
@@ -89,11 +89,11 @@
         @foreach($super as $sup)
             @if($sup['is_coord'] == 0)
                 <tr>
-                    <td>{{$sup['id']}}</td>
+                    <td>{{$sup['email']}}</td>
                     <td>{{$sup['name']}}</td>
                     <td>{{$sup['contact']}}</td>
                     <td>
-                        <input type="radio" id="project_supervisor_id" name="project_supervisor_id" value="{{$sup['id']}}" required>
+                        <input type="radio" id="project_supervisor_email" name="project_supervisor_email" value="{{$sup['id']}}" required>
                     </td>
                 </tr>
             @endif

@@ -51,16 +51,16 @@ class lectControl extends Controller
         
         //Check if lect is currently supervising
         DB::table('projects')
-        ->where('supervisor_id', $id)
-        ->update(['supervisor_id' => NULL]);
+        ->where('supervisor_email', $id)
+        ->update(['supervisor_email' => NULL]);
 
         DB::table('projects')
-        ->where('examiner_id_one', $id)
-        ->update(['examiner_id_one' => NULL]);
+        ->where('examiner_email_one', $id)
+        ->update(['examiner_email_one' => NULL]);
 
         DB::table('projects')
-        ->where('examiner_id_two', $id)
-        ->update(['examiner_id_two' => NULL]);
+        ->where('examiner_email_two', $id)
+        ->update(['examiner_email_two' => NULL]);
 
         return redirect("lect");
     }

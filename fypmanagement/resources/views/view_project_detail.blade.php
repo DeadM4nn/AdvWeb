@@ -28,9 +28,9 @@
         <!-- Assign Supervisor -->
         <div>
         <p>
-            <h3><b>Supervisor ID:</b> 
-            {{$x->supervisor_id}}
-            @if($x->supervisor_id == 0)
+            <h3><b>Supervisor Email:</b> 
+            {{$x->supervisor_email}}
+            @if($x->supervisor_email == 0)
                     Unassigned
             @endif
             <br></h3>
@@ -57,9 +57,9 @@
   <!-- Assign Examiner #1 -->
   <div>
         <p>
-            <h3><b>Examiner #1 ID:</b> 
-            {{$x->examiner_id_one}}
-            @if($x->examiner_id_one == 0)
+            <h3><b>Examiner #1 Email:</b> 
+            {{$x->examiner_email_one}}
+            @if($x->examiner_email_one == 0)
                     Unassigned
             @endif
             <br></h3>
@@ -85,9 +85,9 @@
         <!-- Assign Examiner #2 -->
         <div>
         <p>
-            <h3><b>Examiner #2 ID:</b> 
-            {{$x->examiner_id_two}}
-            @if($x->examiner_id_two == 0)
+            <h3><b>Examiner #2 Email:</b> 
+            {{$x->examiner_email_two}}
+            @if($x->examiner_email_two == 0)
                     Unassigned
             @endif
             <br></h3>

@@ -41,7 +41,7 @@ class projectControl extends Controller
         $new_proj->progress = $req->project_progress;
         $new_proj->status = $req->project_status;
         $new_proj->type = $req->project_type;
-        $new_proj->supervisor_id = $req->project_supervisor_id;
+        $new_proj->supervisor_email = $req->project_supervisor_email;
         $new_proj->save();
         $id = $req->project_student_id;
         return redirect("/project/view/$id");
@@ -62,21 +62,21 @@ class projectControl extends Controller
                         //Supervisor
                         $lect_data = DB::table('projects')
                         ->where('student_id', $id)
-                        ->leftJoin('lects', 'projects.supervisor_id', '=', 'lects.id')
+                        ->leftJoin('lects', 'projects.supervisor_email', '=', 'lects.email')
                         ->select('lects.name')
                         ->get();
 
                         //Examiner #1
                         $exa_one = DB::table('projects')
                         ->where('student_id', $id)
-                        ->leftJoin('lects', 'projects.examiner_id_one', '=', 'lects.id')
+                        ->leftJoin('lects', 'projects.examiner_email_one', '=', 'lects.email')
                         ->select('lects.name')
                         ->get();
 
                         //Examiner #1
                         $exa_two = DB::table('projects')
                         ->where('student_id', $id)
-                        ->leftJoin('lects', 'projects.examiner_id_two', '=', 'lects.id')
+                        ->leftJoin('lects', 'projects.examiner_email_two', '=', 'lects.email')
                         ->select('lects.name')
                         ->get();
         return view("view_project_detail", ["data"=>$data, "lect_data" =>$lect_data, 'exa_one' => $exa_one, 'exa_two' => $exa_two]);
@@ -104,9 +104,9 @@ class projectControl extends Controller
 
     function assign(Request $req){
         $cur_proj = project::find($req->student_id);
-        $cur_proj->supervisor_id = $req->supervisor_id;
-        $cur_proj->examiner_id_one = $req->examiner_id_one;
-        $cur_proj->examiner_id_two = $req->examiner_id_two;
+        $cur_proj->supervisor_email = $req->supervisor_email;
+        $cur_proj->examiner_email_one = $req->examiner_email_one;
+        $cur_proj->examiner_email_two = $req->examiner_email_two;
         $cur_proj->save();
         return redirect("/project/view/$req->student_id");
     }

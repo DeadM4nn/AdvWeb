@@ -3,36 +3,34 @@
 @section('content')
     <!-- Data Initializing -->
     @php
-    $picked = $data->examiner_id_one;
-    $avoidOne = $data->supervisor_id;
-    $avoidTwo = $data->examiner_id_two;
+    $picked = $data->examiner_email_one;
+    $avoidOne = $data->supervisor_email;
+    $avoidTwo = $data->examiner_email_two;
     @endphp
 
     <form class="w3-container" action="/project/assign/supervisor/process" method="post">
         @csrf
         <input type="hidden" name="student_id" id="student_id" value="{{$data->student_id}}">
-        <input type="hidden" name="supervisor_id" id="supervisor_id" value="{{$data->supervisor_id}}">
-        <input type="hidden" name="examiner_id_two" id="examiner_id_two" value="{{$data->examiner_id_two}}">
+        <input type="hidden" name="supervisor_email" id="supervisor_email" value="{{$data->supervisor_email}}">
+        <input type="hidden" name="examiner_email_two" id="examiner_email_two" value="{{$data->examiner_email_two}}">
 
         <!-- project Supervisor -->
         <div class="form-group"  style="margin-bottom:32px">
         <br>
         <table class="w3-table w3-striped w3-bordered ">
             <tr class="w3-red">
-                <th>Lecture ID</th>
+                <th>Email</th>
                 <th>Name</th>
-                <th>Contact</th>
                 <th>Choose</th>
             </tr>
 
             @foreach($super as $sup)
                 @if($sup['is_coord'] == 0)
                     <tr>
-                        <td>{{$sup['id']}}</td>
+                        <td>{{$sup['email']}}</td>
                         <td>{{$sup['name']}}</td>
-                        <td>{{$sup['contact']}}</td>
                         <td>
-                            <input type="radio" id="examiner_id_one" name="examiner_id_one" value="{{$sup['id']}}" 
+                            <input type="radio" id="examiner_email_one" name="examiner_email_one" value="{{$sup['id']}}" 
                             @if($sup['id'] == $avoidOne || $sup['id'] == $avoidTwo)
                                 disabled
                             @elseif($sup['id'] == $picked)
