@@ -19,7 +19,7 @@
                     <td>{{$x['progress']}}</td>
                     <td>{{$x['type']}}</td>
                     <td>{{$x['student_id']}}</td>
-                    <td><a href="/project/view/{{$x['student_id']}}" class="w3-button w3-white w3-border w3-border-red w3-round-large">
+                    <td><a href="/project/update/{{$x->student_id}}" class="w3-button w3-white w3-border w3-border-red w3-round-large">
                     Detail
                     </a></td>
                 </tr>

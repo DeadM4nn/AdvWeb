@@ -93,7 +93,7 @@
                     <td>{{$sup['name']}}</td>
                     <td>{{$sup['contact']}}</td>
                     <td>
-                        <input type="radio" id="project_supervisor_email" name="project_supervisor_email" value="{{$sup['id']}}" required>
+                        <input type="radio" id="project_supervisor_email" name="project_supervisor_email" value="{{$sup['email']}}" required>
                     </td>
                 </tr>
             @endif

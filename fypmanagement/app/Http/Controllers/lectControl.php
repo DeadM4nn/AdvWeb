@@ -6,19 +6,32 @@ use Illuminate\Http\Request;
 use App\Models\lect;
 use App\Models\project;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class lectControl extends Controller
 {
     function registerForm(){
+        if(!Auth::user()->is_coord){
+            return redirect("/home");
+        }
+
         return view("register_lect");
     }
 
     function showList(){
+        if(!Auth::user()->is_coord){
+            return redirect("/home");
+        }
+
         $data = lect::all();
         return view("view_lect_list", ["data"=>$data]);
     }
 
     function registerProcess(Request $req){
+        if(!Auth::user()->is_coord){
+            return redirect("/home");
+        }
+
         $new_lect = new lect;
         $new_lect->id = $req->lect_id;
         $new_lect->name = $req->lect_name;
@@ -30,11 +43,20 @@ class lectControl extends Controller
     }
 
     function updateForm($id){
+        if(!Auth::user()->is_coord){
+            return redirect("/home");
+        }
+
         $cur_lect = lect::find($id);
         return view("update_lect", ["cur"=>$cur_lect]);
     }
 
     function updateProcess(Request $req){
+
+        if(!Auth::user()->is_coord){
+            return redirect("/home");
+        }
+
         $lect_upt = lect::find($req->lect_id);
         $lect_upt->id = $req->lect_id;
         $lect_upt->name = $req->lect_name;
@@ -46,6 +68,10 @@ class lectControl extends Controller
     }
     
     function deleteLect($id){
+        if(!Auth::user()->is_coord){
+            return redirect("/home");
+        }
+
         $lect = lect::find($id);
         $lect->delete();
         
@@ -66,6 +92,10 @@ class lectControl extends Controller
     }
 
     function resetForm($id){
+        if(!Auth::user()->is_coord){
+            return redirect("/home");
+        }
+
         $cur_lect = lect::find($id);
         return view("lect_password_form", ["cur"=>$cur_lect]);
     }

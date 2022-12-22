@@ -6,6 +6,7 @@ use App\Http\Controllers\Route;
 use Illuminate\Http\Request;
 use App\Models\student;
 use App\Models\project;
+use Illuminate\Support\Facades\Auth;
 
 class studentControl extends Controller
 {
@@ -14,6 +15,10 @@ class studentControl extends Controller
     }
 
     function registerProcess(Request $req){
+        if(!Auth::user()->is_coord){
+            return redirect("/home");
+        }
+
         $new_student = new student;
         $new_student->id = $req->student_id;
         $new_student->name = $req->student_name;
@@ -25,6 +30,10 @@ class studentControl extends Controller
     }
 
     function showList(){
+        if(!Auth::user()->is_coord){
+            return redirect("/home");
+        }
+
         $data = student::paginate(5);
         $project = project::pluck("student_id");
         //$project = $project->collapse();
@@ -32,6 +41,10 @@ class studentControl extends Controller
     }
 
     function deleteStudent($id){
+        if(!Auth::user()->is_coord){
+            return redirect("/home");
+        }
+
         $student = student::find($id);
         $student->delete();
         $project = project::pluck("student_id");
@@ -46,11 +59,19 @@ class studentControl extends Controller
     }
 
     function updateForm($id){
+        if(!Auth::user()->is_coord){
+            return redirect("/home");
+        }
+
         $student = student::find($id);
         return view("update_student", ["cur"=>$student]);
     }
 
     function updateProcess(Request $req){
+        if(!Auth::user()->is_coord){
+            return redirect("/home");
+        }
+
         $cur_data = student::find($req->student_id);
         $cur_data->id = $req->student_id;
         $cur_data->name = $req->student_name;

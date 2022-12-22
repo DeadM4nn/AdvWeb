@@ -1,6 +1,8 @@
 @extends('master_template')
 @section('title', 'Register Student')
 @section('content')
+    
+    
     <a href="/student" class="w3-button w3-black w3-hover-red" style="margin-bottom:32px">Back</a>
     <form class="w3-container" action="/student/register/process" method="post">
 

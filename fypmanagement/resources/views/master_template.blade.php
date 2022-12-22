@@ -23,13 +23,25 @@ body {font-size:16px;}
     <h3 class="w3-padding-16"><b>Final Year Project<br>Manager</b></h3>
   </div>
   <div class="w3-bar-block">
-    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+
+  @if(!Auth::user()->is_coord)
+    <a href="/supervising" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Supervising</a> 
+  @else  
     <a href="/student" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Student</a> 
     <a href="/project" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Project</a> 
     <a href="/lect" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Supervisor</a> 
-    <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Logout</a> 
+    <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">
+  @endif
+    <form method="POST" action="{{ route('logout') }}" id="logout-form">
+      @csrf
+      <a href="{{ route('logout') }}" onclick="event.preventDefault();
+      document.getElementById('logout-form').submit()" class="menu-link px-5">Sign Out</a>
+    </form>
+    </a>
   </div>
 </nav>
+
+
 
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">

@@ -30,10 +30,10 @@
                         <td>{{$sup['email']}}</td>
                         <td>{{$sup['name']}}</td>
                         <td>
-                            <input type="radio" id="supervisor_email" name="supervisor_email" value="{{$sup['id']}}" 
-                            @if($sup['id'] == $avoidOne || $sup['id'] == $avoidTwo)
+                            <input type="radio" id="supervisor_email" name="supervisor_email" value="{{$sup['email']}}" 
+                            @if($sup['email'] == $avoidOne || $sup['email'] == $avoidTwo)
                                 disabled
-                            @elseif($sup['id'] == $picked)
+                            @elseif($sup['email'] == $picked)
                                 checked
                             @endif
                             required>

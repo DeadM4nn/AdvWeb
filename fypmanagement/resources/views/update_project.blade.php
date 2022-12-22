@@ -3,7 +3,6 @@
 @section('content')
     <a href="/student" class="w3-button w3-black w3-hover-red" style="margin-bottom:32px">Back</a>
     <form class="w3-container" action="/project/update/process" method="post">
-        {{$data}}
         @csrf
         <div class="form-group" style="margin-bottom:32px">
             <label for="project_title" >Student ID</label>        
