@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\lect;
+use App\Models\project;
 use Illuminate\Support\Facades\DB;
 
 class lectControl extends Controller
@@ -47,6 +48,20 @@ class lectControl extends Controller
     function deleteLect($id){
         $lect = lect::find($id);
         $lect->delete();
+        
+        //Check if lect is currently supervising
+        DB::table('projects')
+        ->where('supervisor_id', $id)
+        ->update(['supervisor_id' => NULL]);
+
+        DB::table('projects')
+        ->where('examiner_id_one', $id)
+        ->update(['examiner_id_one' => NULL]);
+
+        DB::table('projects')
+        ->where('examiner_id_two', $id)
+        ->update(['examiner_id_two' => NULL]);
+
         return redirect("lect");
     }
 

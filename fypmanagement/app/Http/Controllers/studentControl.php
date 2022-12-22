@@ -26,16 +26,22 @@ class studentControl extends Controller
 
     function showList(){
         $data = student::paginate(5);
-        $project = student::pluck("id");
+        $project = project::pluck("student_id");
         //$project = $project->collapse();
-        
-
-        return view('view_student_list', ['data'=>$data, 'student_proj' => $project]);
+        return view('view_student_list', ['data'=>$data, 'project_list' => $project]);
     }
 
     function deleteStudent($id){
         $student = student::find($id);
         $student->delete();
+        $project = project::pluck("student_id");
+        
+        //If the student has a project, delete this aswell
+        if($project->contains($id)){
+            $project_del = project::find($id);
+            $project_del->delete();
+        }
+
         return redirect("student");
     }
 

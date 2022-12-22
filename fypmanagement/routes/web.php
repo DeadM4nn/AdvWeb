@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\studentControl;
 use App\Http\Controllers\lectControl;
 use App\Http\Controllers\projectControl;
@@ -35,5 +36,16 @@ Route::post('/lect/reset/process', [lectControl::class, "updateProcess"]);
 
 
 //Project
-Route::get('/project/register', [projectControl::class, "registerForm"]);
+Route::get('/project/register/{id}', [projectControl::class, "registerForm"]);
 Route::post('/project/register/process', [projectControl::class, "registerProcess"]);
+Route::get('/project', [projectControl::class, "showList"]);
+Route::get('/project/view/{id}', [projectControl::class, "showDetail"]);
+
+Route::get('/project/view/assign/supervisor/{id}', [projectControl::class, "assignSupervisorForm"]);
+Route::post('/project/assign/supervisor/process', [projectControl::class, "assign"]);
+Route::get('/project/view/assign/examinerone/{id}', [projectControl::class, "assignExaminerOneForm"]);
+Route::get('/project/view/assign/examinertwo/{id}', [projectControl::class, "assignExaminerTwoForm"]);
+
+Route::get('/project/delete/{id}', [projectControl::class, "delete"]);
+Route::get('project/update/{id}/', [projectControl::class, "updateForm"]);
+Route::post('project/update/process/', [projectControl::class, "updateProcess"]);

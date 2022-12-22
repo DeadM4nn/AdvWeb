@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class project extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'student_id';
     protected $keyType = 'string';
     public $timestamps=false; 
 }
