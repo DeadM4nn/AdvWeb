@@ -16,6 +16,16 @@ use App\Http\Controllers\projectControl;
 |
 */
 
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
 //Students
 Route::get('/student/register', [studentControl::class, "registerForm"]);
 Route::post('/student/register/process', [studentControl::class, "registerProcess"]);
@@ -49,20 +59,15 @@ Route::get('/project/view/assign/examinertwo/{id}', [projectControl::class, "ass
 Route::get('/project/delete/{id}', [projectControl::class, "delete"]);
 Route::get('project/update/{id}/', [projectControl::class, "updateForm"]);
 Route::post('project/update/process/', [projectControl::class, "updateProcess"]);
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
-
-});
 
 //User based page
 Route::get("/supervising", [projectControl::class, "showProjectIndividual"]);
 Route::get("/project/supervising/update/{id}", [projectControl::class, "supervisingUpdate"]);
 Route::post('project/supervising/update/process/', [projectControl::class, "SupervisingUpdateProcess"]);
+
+Route::view("/home", "home");
+});
+
+Route::get("/", function(){
+    return redirect("/login");
+});

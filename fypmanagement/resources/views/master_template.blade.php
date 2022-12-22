@@ -25,12 +25,11 @@ body {font-size:16px;}
   <div class="w3-bar-block">
 
   @if(!Auth::user()->is_coord)
-    <a href="/supervising" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Supervising</a> 
+    <a href="/supervising" style="margin-bottom:30px" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Supervising</a> 
   @else  
     <a href="/student" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Student</a> 
     <a href="/project" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Project</a> 
-    <a href="/lect" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Supervisor</a> 
-    <a href="" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">
+    <a href="/lect" style="margin-bottom:30px" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Supervisor</a> 
   @endif
     <form method="POST" action="{{ route('logout') }}" id="logout-form">
       @csrf
